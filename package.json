@@ -1,0 +1,22 @@
+{
+  "name": "is-on-water",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "start:dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@geo-maps/earth-lands-1m": "^0.6.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "geojson-geometries-lookup": "^0.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
