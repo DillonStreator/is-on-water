@@ -43,7 +43,7 @@ const isOnWaterRouter = express
       return res
         .status(400)
         .send(
-          `the max number of points allow is ${MAX_BATCH_UPLOAD_NUMBER_OF_POINTS}. You provided ${points.length}.`
+          `the max number of points allowed is ${MAX_BATCH_UPLOAD_NUMBER_OF_POINTS}. You provided ${points.length}.`
         );
 
     if (!points.every(isPoint))
