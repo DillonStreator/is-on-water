@@ -5,15 +5,15 @@ const isOnWater = require("./is-on-water");
 const { isPoint } = require("./util");
 
 const {
-  MAX_BATCH_UPLOAD_SIZE_IN_BYTES, // https://www.npmjs.com/package/bytes#bytesparsestring%EF%BD%9Cnumber-value-number%EF%BD%9Cnull
-  MAX_BATCH_UPLOAD_NUMBER = 100,
+  MAX_UPLOAD_SIZE_IN_BYTES, // https://www.npmjs.com/package/bytes#bytesparsestring%EF%BD%9Cnumber-value-number%EF%BD%9Cnull
+  MAX_BATCH_UPLOAD_NUMBER_OF_POINTS = 100,
 } = process.env;
 
 const app = express();
 
 app.use(cors());
 const bpShared = {
-  limit: MAX_BATCH_UPLOAD_SIZE_IN_BYTES,
+  limit: MAX_UPLOAD_SIZE_IN_BYTES,
 };
 app.use(bp.json(bpShared));
 app.use(bp.urlencoded({ ...bpShared, extended: true }));
@@ -39,11 +39,11 @@ const isOnWaterRouter = express
     if (!Array.isArray(points))
       return res.status(400).send("body must be an array of points");
 
-    if (points.length > MAX_BATCH_UPLOAD_NUMBER)
+    if (points.length > MAX_BATCH_UPLOAD_NUMBER_OF_POINTS)
       return res
         .status(400)
         .send(
-          `the max number of points allow is ${MAX_BATCH_UPLOAD_NUMBER}. You provided ${points.length}.`
+          `the max number of points allow is ${MAX_BATCH_UPLOAD_NUMBER_OF_POINTS}. You provided ${points.length}.`
         );
 
     if (!points.every(isPoint))
