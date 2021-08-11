@@ -3,16 +3,16 @@ const getMap = require("@geo-maps/earth-lands-1m");
 
 const landLookup = new GeoJsonLookup(getMap());
 
-module.exports = ({ lat, lng }) => {
+module.exports = ({ lat, lon }) => {
   lat = parseFloat(lat)
-  lng = parseFloat(lng)
+  lon = parseFloat(lon)
 
   return {
-    isOnWater: !landLookup.hasContainers({
+    water: !landLookup.hasContainers({
       type: "Point",
-      coordinates: [lng, lat],
+      coordinates: [lon, lat],
     }),
     lat,
-    lng,
+    lon,
   }
 }

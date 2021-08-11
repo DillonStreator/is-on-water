@@ -28,11 +28,11 @@ const isOnWaterRouter = express
       return res
         .status(400)
         .send(
-          "'lat' and 'lng' query parameters required representing a valid lat/lng (-180 < lat/lng < 180)"
+          "'lat' and 'lon' query parameters required representing a valid lat/lon (-180 < lat/lon < 180)"
         );
-    const { lat, lng } = req.query;
+    const { lat, lon } = req.query;
 
-    res.json(isOnWater({ lat, lng }));
+    res.json(isOnWater({ lat, lon }));
   })
   .post("/", (req, res) => {
     const points = req.body;
@@ -50,7 +50,7 @@ const isOnWaterRouter = express
       return res
         .status(400)
         .send(
-          "'points' is a required field that must be an array of objects containing keys 'lat' and 'lng' representing a valid lat/lng (-180 < lat/lng < 180)"
+          "'points' is a required field that must be an array of objects containing keys 'lat' and 'lon' representing a valid lat/lon (-180 < lat/lon < 180)"
         );
 
     res.json(points.map(isOnWater));
