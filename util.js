@@ -1,6 +1,7 @@
 const isNumber = (n) => !isNaN(parseFloat(n)) && isFinite(n);
 
-const hasPoint = (obj) => {
+// in order to be a point, the object must contain a `lat` and `lng` property that are valid latitude and longitude values
+const isPoint = (obj) => {
   if (!(typeof obj === "object")) return false;
 
   const { lat, lng } = obj;
@@ -14,5 +15,5 @@ const hasPoint = (obj) => {
 };
 
 module.exports = {
-  hasPoint,
+  isPoint,
 };
