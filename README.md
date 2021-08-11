@@ -1,3 +1,3 @@
 # is-on-water
 
-Check if a point (latitude and longitude) is on water. Exposed via an http api allowing for a single point or in batches.
+> 💧 Check whether a geographic coordinate is in the water or not on the earth. Exposed via an http api allowing for single point lookups or in batches.
