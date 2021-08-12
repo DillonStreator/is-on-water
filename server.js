@@ -1,6 +1,5 @@
 const express = require("express");
 const cors = require("cors");
-const bp = require("body-parser");
 const isOnWater = require("./is-on-water");
 const { isPoint } = require("./util");
 
@@ -12,11 +11,7 @@ const {
 const app = express();
 
 app.use(cors());
-const bpShared = {
-  limit: MAX_UPLOAD_SIZE_IN_BYTES,
-};
-app.use(bp.json(bpShared));
-app.use(bp.urlencoded({ ...bpShared, extended: true }));
+app.use(express.json({ limit: MAX_UPLOAD_SIZE_IN_BYTES }))
 
 app.get("/", (_, res) => res.redirect("/status"));
 app.get("/status", (_, res) => res.sendStatus(200));
